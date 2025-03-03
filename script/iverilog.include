@@ -1,0 +1,5 @@
+// Include file directory
+-y ./src
+-y ./tb
+// top file
+./tb/tb_cycle_counter_top.v
