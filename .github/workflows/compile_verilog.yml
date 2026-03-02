@@ -19,19 +19,13 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    timeout-minutes: 2
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    timeout-minutes: 3
+    container:
+      image: ghcr.io/hdl/iverilog:latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      - run: |
-          echo "Install required dependencies"
-          sudo apt-get update
-          sudo apt-get install iverilog
-
-      - run: |
+      - uses: actions/checkout@v4
+      - name: Build & run tests
+        run: |
           iverilog -o design.o -c script/iverilog.include
           vvp design.o
           echo "Script has finished running."
