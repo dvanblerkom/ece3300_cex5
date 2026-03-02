@@ -2,4 +2,4 @@
 -y ./src
 -y ./tb
 // top file
-./tb/tb_cycle_counter_top.v
+./tb/alarm_fsm_tb.v
